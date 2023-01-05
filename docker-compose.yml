@@ -1,0 +1,19 @@
+version: '3.3'
+
+networks:
+  serviarrozNet:
+    ipam:
+     driver: default
+     config:
+        - subnet: 10.25.0.0/8
+
+services:
+  algo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: algo
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/home/api:delegated
